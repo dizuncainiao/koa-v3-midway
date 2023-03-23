@@ -1,5 +1,6 @@
-import {Controller, Get, Inject, Query} from '@midwayjs/core';
+import {Controller, Get, Post, Inject, Query} from '@midwayjs/core';
 import {PersonService} from '../service/person.service';
+import {Person} from "../entity/person.entity";
 
 @Controller('/')
 export class PersonController {
@@ -13,6 +14,17 @@ export class PersonController {
       return await this.personService.findPerson(name);
     } catch (e) {
       console.error(e);
+    }
+  }
+
+  @Post('/create_person')
+  // fixme
+  async createPerson(@Query('data') data: Person) {
+    try {
+      console.log(data, 'data')
+      return this.personService.savePerson(data)
+    } catch (e) {
+      console.error(e)
     }
   }
 }

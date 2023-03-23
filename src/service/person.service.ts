@@ -2,7 +2,7 @@
 import {Provide} from '@midwayjs/core';
 import {InjectEntityModel} from '@midwayjs/typeorm';
 import {Person} from '../entity/person.entity';
-import {Repository} from 'typeorm';
+import {Like, Repository} from 'typeorm';
 
 @Provide()
 export class PersonService {
@@ -13,11 +13,19 @@ export class PersonService {
     try {
       return await this.personModel.find({
         where: {
-          'user_name': name
+          'user_name': Like(`%${name}%`) // 模糊查询，包含
         }
       });
     } catch (e) {
       console.error(e);
+    }
+  }
+
+  async savePerson(data: Person) {
+    try {
+      await this.personModel.save(data)
+    } catch (e) {
+      console.error(e)
     }
   }
 }
