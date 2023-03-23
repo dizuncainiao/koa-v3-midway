@@ -1,7 +1,7 @@
 // todo step-two（定义 Entity）
 import { Entity, Column, PrimaryGeneratedColumn } from 'typeorm';
 
-@Entity('user')
+@Entity('person')
 export class User {
   @PrimaryGeneratedColumn()
   id: number;
