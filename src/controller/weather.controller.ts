@@ -13,9 +13,11 @@ export class WeatherController {
 
   @Get('/weather')
   async getWeatherInfo(@Query('cityId') cityId: string): Promise<void> {
-    const res = await this.weatherService.getWeather(cityId);
-    if (res) {
+    try {
+      const res = await this.weatherService.getWeather(cityId);
       await this.ctx.render('info', res.weatherinfo);
+    } catch (e) {
+      console.log(e);
     }
   }
 }
