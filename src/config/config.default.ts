@@ -24,4 +24,7 @@ export default {
       },
     },
   },
+  view: {
+    defaultViewEngine: 'nunjucks',
+  },
 } as MidwayConfig;
