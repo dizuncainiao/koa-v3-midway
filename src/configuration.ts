@@ -16,7 +16,7 @@ import { ReportMiddleware } from './middleware/report.middleware';
       component: info,
       enabledEnvironment: ['local'],
     },
-    // todo step-one
+    // todo step-one（配置 orm）
     orm,
   ],
   importConfigs: [join(__dirname, './config')],
