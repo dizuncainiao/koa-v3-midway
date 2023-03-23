@@ -1,4 +1,4 @@
-import {Controller, Get, Post, Inject, Query} from '@midwayjs/core';
+import {Controller, Get, Post, Inject, Query, Body} from '@midwayjs/core';
 import {PersonService} from '../service/person.service';
 import {Person} from "../entity/person.entity";
 
@@ -17,12 +17,13 @@ export class PersonController {
     }
   }
 
+  // 增删改查：增加
   @Post('/create_person')
-  // fixme
-  async createPerson(@Query('data') data: Person) {
+  // fixme 使用 json 传参可以接收到参数，FormData 不行需排查
+  async createPerson(@Body() person: Person) {
     try {
-      console.log(data, 'data')
-      return this.personService.savePerson(data)
+      console.log('person: ', person)
+      return this.personService.savePerson(person)
     } catch (e) {
       console.error(e)
     }

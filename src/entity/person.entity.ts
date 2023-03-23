@@ -12,7 +12,7 @@ const dateTransformer = {
 @Entity('person')
 export class Person {
   @PrimaryGeneratedColumn()
-  id: number;
+  id?: number;
 
   @Column()
   user_name: string;
@@ -23,5 +23,5 @@ export class Person {
   @Column({
     transformer: dateTransformer,
   })
-  created_time: string;
+  created_time?: string;
 }
