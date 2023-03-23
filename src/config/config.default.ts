@@ -1,4 +1,5 @@
 import { MidwayConfig } from '@midwayjs/core';
+import { DbConfig } from './config.db';
 
 export default {
   // use for cookie sign key, should change to your own and keep security
@@ -11,10 +12,10 @@ export default {
     dataSource: {
       default: {
         type: 'mysql',
-        host: '',
+        host: DbConfig.host,
         port: 3306,
-        username: '',
-        password: '',
+        username: DbConfig.username,
+        password: DbConfig.password,
         database: undefined,
         synchronize: false, // 注意：这个要写 false，因为已经有数据了
         logging: false,
