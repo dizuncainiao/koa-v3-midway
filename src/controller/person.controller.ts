@@ -1,6 +1,5 @@
 import { Controller, Get, Inject } from '@midwayjs/core';
 import { PersonService } from '../service/person.service';
-import * as dayjs from 'dayjs';
 
 @Controller('/')
 export class PersonController {
@@ -10,11 +9,7 @@ export class PersonController {
   @Get('/person')
   async getPerson() {
     try {
-      const res = await this.personService.findPerson();
-      return res.map(item => ({
-        ...item,
-        created_time: dayjs(item.created_time).format('YYYY-MM-DD HH:mm:ss'),
-      }));
+      return await this.personService.findPerson();
     } catch (e) {
       console.error(e);
     }

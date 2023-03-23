@@ -1,5 +1,13 @@
 // todo step-two（定义 Entity）
 import { Entity, Column, PrimaryGeneratedColumn } from 'typeorm';
+import * as dayjs from 'dayjs';
+
+const dateTransformer = {
+  // 处理从数据库查询的格式
+  from: (value: Date | number) => dayjs(value).format('YYYY-MM-DD HH:mm'),
+  // 处理存入数据库的格式
+  to: () => new Date(),
+};
 
 @Entity('person')
 export class Person {
@@ -12,6 +20,8 @@ export class Person {
   @Column()
   age: number;
 
-  @Column()
+  @Column({
+    transformer: dateTransformer,
+  })
   created_time: string;
 }
