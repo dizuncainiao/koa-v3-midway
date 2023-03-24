@@ -32,4 +32,19 @@ export class PersonService {
       console.error(e);
     }
   }
+
+  async updatePerson(data: Person) {
+    try {
+      const personToUpdate = await this.personModel.findOne({
+        where: {
+          id: data.id,
+        },
+      });
+      Object.assign(personToUpdate, data);
+
+      await this.personModel.save(personToUpdate);
+    } catch (e) {
+      console.error(e);
+    }
+  }
 }

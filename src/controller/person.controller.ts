@@ -1,4 +1,12 @@
-import { Controller, Get, Post, Inject, Query, Body } from '@midwayjs/core';
+import {
+  Controller,
+  Get,
+  Post,
+  Put,
+  Inject,
+  Query,
+  Body,
+} from '@midwayjs/core';
 import { PersonService } from '../service/person.service';
 import { Person } from '../entity/person.entity';
 
@@ -24,6 +32,16 @@ export class PersonController {
     try {
       console.log('person: ', person);
       return this.personService.savePerson(person);
+    } catch (e) {
+      console.error(e);
+    }
+  }
+
+  // 增删改查：修改
+  @Put('/update_person')
+  async updatePerson(@Body() person: Person) {
+    try {
+      return this.personService.updatePerson(person);
     } catch (e) {
       console.error(e);
     }
