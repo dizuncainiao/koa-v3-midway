@@ -47,4 +47,13 @@ export class PersonService {
       console.error(e);
     }
   }
+
+  async deletePerson(ids: number[]) {
+    try {
+      await this.personModel.delete(ids);
+      console.log('删除成功！');
+    } catch (e) {
+      console.error(e);
+    }
+  }
 }

@@ -3,6 +3,7 @@ import {
   Get,
   Post,
   Put,
+  Del,
   Inject,
   Query,
   Body,
@@ -42,6 +43,16 @@ export class PersonController {
   async updatePerson(@Body() person: Person) {
     try {
       return this.personService.updatePerson(person);
+    } catch (e) {
+      console.error(e);
+    }
+  }
+
+  // 增删改查：删除
+  @Del('/delete_person')
+  async deletePerson(@Body('ids') ids: number[]) {
+    try {
+      return this.personService.deletePerson(ids);
     } catch (e) {
       console.error(e);
     }
