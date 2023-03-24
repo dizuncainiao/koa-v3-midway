@@ -1,6 +1,6 @@
-import {Controller, Get, Post, Inject, Query, Body} from '@midwayjs/core';
-import {PersonService} from '../service/person.service';
-import {Person} from "../entity/person.entity";
+import { Controller, Get, Post, Inject, Query, Body } from '@midwayjs/core';
+import { PersonService } from '../service/person.service';
+import { Person } from '../entity/person.entity';
 
 @Controller('/')
 export class PersonController {
@@ -22,10 +22,10 @@ export class PersonController {
   // fixme 使用 json 传参可以接收到参数，FormData 不行需排查
   async createPerson(@Body() person: Person) {
     try {
-      console.log('person: ', person)
-      return this.personService.savePerson(person)
+      console.log('person: ', person);
+      return this.personService.savePerson(person);
     } catch (e) {
-      console.error(e)
+      console.error(e);
     }
   }
 }
