@@ -23,4 +23,9 @@ export class FormatMiddleware implements IMiddleware<Context, NextFunction> {
       }
     }
   }
+
+  ignore(ctx: Context): boolean {
+    // /v1/weather 需要返回一个 html 字符串，所以得跳过该中间件的格式化
+    return ctx.path.includes('/v1/weather')
+  }
 }

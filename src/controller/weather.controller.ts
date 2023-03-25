@@ -1,7 +1,7 @@
-import { Controller, Get, Inject, Query } from '@midwayjs/core';
-import { WeatherService } from '../service/weather.service';
+import {Controller, Get, Inject, Query} from '@midwayjs/core';
+import {WeatherService} from '../service/weather.service';
 // import { WeatherInfo } from '../interface';
-import { Context } from '@midwayjs/koa';
+import {Context} from '@midwayjs/koa';
 
 @Controller('/')
 export class WeatherController {
@@ -12,6 +12,7 @@ export class WeatherController {
   ctx: Context;
 
   @Get('/weather')
+  // http://127.0.0.1:7001/v1/weather?cityId=101010100
   async getWeatherInfo(@Query('cityId') cityId: string): Promise<void> {
     try {
       const res = await this.weatherService.getWeather(cityId);
