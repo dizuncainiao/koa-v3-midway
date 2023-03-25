@@ -7,6 +7,7 @@ export default {
   keys: '1679535584335_3615',
   koa: {
     port: 7001,
+    globalPrefix: '/v1'
   },
   // todo step-three（配置 mysql）
   typeorm: {
