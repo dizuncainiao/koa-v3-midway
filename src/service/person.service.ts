@@ -1,9 +1,9 @@
 // todo step-four（编写 Service）
-import {Provide} from '@midwayjs/core';
-import {InjectEntityModel} from '@midwayjs/typeorm';
-import {Person} from '../entity/person.entity';
-import {Like, Repository} from 'typeorm';
-import {PersonEmptyDataError} from "../error/person.error";
+import { Provide } from '@midwayjs/core';
+import { InjectEntityModel } from '@midwayjs/typeorm';
+import { Person } from '../entity/person.entity';
+import { Like, Repository } from 'typeorm';
+import { PersonEmptyDataError } from '../error/person.error';
 
 @Provide()
 export class PersonService {
@@ -14,10 +14,10 @@ export class PersonService {
     try {
       const condition = name
         ? {
-          where: {
-            user_name: Like(`%${name}%`), // 模糊查询，包含
-          },
-        }
+            where: {
+              user_name: Like(`%${name}%`), // 模糊查询，包含
+            },
+          }
         : {};
 
       return await this.personModel.find(condition);
@@ -30,7 +30,7 @@ export class PersonService {
     try {
       await this.personModel.save(data);
     } catch (err) {
-      throw new PersonEmptyDataError(err)
+      throw new PersonEmptyDataError(err);
     }
   }
 

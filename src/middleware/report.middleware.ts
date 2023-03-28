@@ -17,7 +17,7 @@ export class ReportMiddleware implements IMiddleware<Context, NextFunction> {
         }ms`
       );
       // 返回给上一个中间件的结果（此处的 result 会返回给上一个中间件 FormatMiddleware）
-      console.log('ReportMiddleware 的返回结果')
+      console.log('ReportMiddleware 的返回结果');
       return result;
     };
   }

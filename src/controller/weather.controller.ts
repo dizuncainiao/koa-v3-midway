@@ -1,7 +1,7 @@
-import {Controller, Get, Inject, Query} from '@midwayjs/core';
-import {WeatherService} from '../service/weather.service';
+import { Controller, Get, Inject, Query } from '@midwayjs/core';
+import { WeatherService } from '../service/weather.service';
 // import { WeatherInfo } from '../interface';
-import {Context} from '@midwayjs/koa';
+import { Context } from '@midwayjs/koa';
 
 @Controller('/')
 export class WeatherController {
